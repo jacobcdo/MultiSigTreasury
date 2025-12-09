@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "forge-std/Test.sol";
-import "../src/MultiSigTreasury.sol";
+import { Test } from "forge-std/Test.sol";
+import { MultiSigTreasury } from "../src/MultiSigTreasury.sol";
+
 
 contract MultiSigTest is Test {
     MultiSigTreasury multisig;

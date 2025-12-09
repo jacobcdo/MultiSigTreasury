@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "./interface_MultiSigTreasury.sol";
+import { IMultiSigTreasury } from "./interface_MultiSigTreasury.sol";
 
 contract MultiSigTreasury is IMultiSigTreasury {
 
@@ -46,19 +46,34 @@ contract MultiSigTreasury is IMultiSigTreasury {
     //////////////////////////////////////////////////////////////*/
 
     modifier onlyOwner() {
-        require(ownerExists[msg.sender], "Not an owner");
+        _onlyOwner();
         _;
     }
+
+    function _onlyOwner() internal view {
+        require(ownerExists[msg.sender], "Not an owner");
+    }
+
 
     modifier txExists(uint256 txId) {
-        require(txId < transactions.length, "Tx does not exist");
+        _txExists(txId);
         _;
     }
 
+    function _txExists(uint256 txId) internal view {
+        require(txId < transactions.length, "Tx does not exist");
+    }
+
+
     modifier notExecuted(uint256 txId) {
-        require(!transactions[txId].executed, "Tx already executed");
+        _notExecuted(txId);
         _;
     }
+
+    function _notExecuted(uint256 txId) internal view {
+        require(!transactions[txId].executed, "Already executed");
+    }
+
 
 
     /*//////////////////////////////////////////////////////////////
