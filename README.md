@@ -64,3 +64,31 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
+## Deploying
+
+```
+forge script script/Deploy.s.sol \
+  --rpc-url $RPC_URL \
+  --private-key $PRIVATE_KEY \
+  --broadcast
+
+```
+
+```
+cast block-number --rpc-url $RPC_URL
+```
+
+```
+cast call $MULTISIG "owners(uint256)" 0
+cast call $MULTISIG "owners(uint256)" 1
+cast call $MULTISIG "owners(uint256)" 2
+```
+
+```
+cast call $MULTISIG "required()"
+```
+
+```
+forge script script/Deploy.s.sol --rpc-url local --broadcast --private-key $PRIVATE_KEY
+```

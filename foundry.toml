@@ -4,4 +4,12 @@ src = "src"
 out = "out"
 libs = ["lib"]
 
+[sender]
+default = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
+
+
+[rpc_endpoints]
+local = "${RPC_URL}"
+
+
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
