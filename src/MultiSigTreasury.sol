@@ -174,6 +174,7 @@ function proposeTransaction(address to, uint256 value, bytes calldata data)
         emit OwnerRemoved(owner);
     }
 
+    // Change the approval threshold
     function changeThreshold(uint256 newThreshold) external onlyOwner {
         require(newThreshold > 0, "Threshold must be > 0");
         require(newThreshold <= owners.length, "Threshold too high");
