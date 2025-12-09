@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import { Test } from "forge-std/Test.sol";
-import { MultiSigTreasury } from "../src/MultiSigTreasury.sol";
-
+import {Test} from "forge-std/Test.sol";
+import {MultiSigTreasury} from "../src/MultiSigTreasury.sol";
 
 contract MultiSigTest is Test {
     MultiSigTreasury multisig;
@@ -44,11 +43,7 @@ contract MultiSigTest is Test {
     function testProposeApproveExecute() public {
         // --- Step 1: Propose transaction ---
         vm.prank(owner1); // owner1 calls next function
-        uint256 txId = multisig.proposeTransaction(
-            recipient,
-            1 ether,
-            ""
-        );
+        uint256 txId = multisig.proposeTransaction(recipient, 1 ether, "");
 
         // --- Step 2: Approve by owner1 ---
         vm.prank(owner1);

@@ -2,11 +2,8 @@
 pragma solidity ^0.8.20;
 
 interface IMultiSigTreasury {
-
     // ------ Core multisig actions ------
-    function proposeTransaction(address to, uint256 value, bytes calldata data)
-        external
-        returns (uint256 txId);
+    function proposeTransaction(address to, uint256 value, bytes calldata data) external returns (uint256 txId);
 
     function approveTransaction(uint256 txId) external;
 
